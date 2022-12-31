@@ -79,7 +79,7 @@ function App() {
     window.addEventListener('scroll',handleScroll)
     setTimeout(()=>{
       if(imageCount !== 3){incrementImageCount(3)}
-    },120000)
+    },30000)
   })
 
   return (
