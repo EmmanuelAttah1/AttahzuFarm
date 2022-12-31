@@ -1,0 +1,111 @@
+#contact-us{
+    padding: 0px 40px 40px 40px;
+    margin-top: 100px;
+  }
+  
+  .about-us-container{
+    margin-top: 40px;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    grid-auto-flow: row;
+  }
+  
+  #contact-info-container{
+    border-radius: 10px;
+    background-color: #3b5768;
+    color:white;
+    padding:30px;
+  }
+  
+  #contact-heading{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  
+  #contact-caption{
+    font-size: 13px;
+    margin-top:30px;
+  }
+  
+  #information-container{
+    margin: 40px 0px;
+  }
+  
+  .information{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .information div{
+    margin-left: 10px;
+    font-size: 15px;
+  }
+  
+  .label{
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  #message-input{
+    border: 0px;
+    border-bottom: 1px solid rgb(197, 186, 186);
+    width:100%;
+  }
+  
+  #contact-form input{
+    height:30px;
+    border: 0px;
+    border-bottom: 1px solid rgb(197, 186, 186);
+    width:100%;
+  }
+  
+  #contact-form input:focus-visible, #message-input:focus-visible{
+    outline: 0px;
+    border-bottom: 1px solid rgb(48, 124, 236);
+  }
+  
+  #contact-form-container{
+    padding:0px 20px;
+  }
+  
+  #contact-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 50px;
+    gap:40px;
+    margin-bottom: 40px;
+  }
+  
+  #contact-form div{
+    height: fit-content;
+  }
+
+  @media screen and (max-width: 800px) {
+    .about-us-container{
+        margin-top: 40px;
+        display:flex;
+        flex-direction: column;
+      }
+
+      #contact-info-container{
+        margin-bottom: 50px;
+      }
+    }
+
+
+  @media screen and (max-width: 700px) {
+
+    #contact-us{
+        padding: 0px 25px 25px 25px;
+      }
+
+      .heading-caption{
+        margin-bottom: 50px;
+      }
+  }
+
+  
