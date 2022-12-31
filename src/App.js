@@ -58,7 +58,7 @@ function App() {
     const offset=window.scrollY;
     
     if(offset > 60){
-      if(navScrolled!=true){
+      if(navScrolled!==true){
         setNavScrolled(true)
       }
     }else{
@@ -78,7 +78,7 @@ function App() {
   useEffect(() => {
     window.addEventListener('scroll',handleScroll)
     setTimeout(()=>{
-      if(imageCount != 3){incrementImageCount(3)}
+      if(imageCount !== 3){incrementImageCount(3)}
     },120000)
   })
 

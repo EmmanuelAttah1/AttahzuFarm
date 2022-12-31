@@ -7,7 +7,7 @@ import { Information } from '../../Information/data';
 
 
 function ContactUs(props) {
-  const {scroll_to,myRef} = props
+  const {myRef} = props
   return (
     <div id="contact-us" ref={myRef}>
         <div className="site-heading">Any questions or remarks, or you want to buy from us? just write us a message</div>

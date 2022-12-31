@@ -32,10 +32,10 @@ function AboutUs(props) {
     </div>
     <div id="about-us-images">
       <div id="about-us-images-row">
-        <img className='about-us-image' src={img2} onLoad={incrementImageCount}/>
-        <img className='about-us-image' src={img} onLoad={incrementImageCount}/>
+        <img className='about-us-image' src={img2} onLoad={incrementImageCount} alt="img"/>
+        <img className='about-us-image' src={img} onLoad={incrementImageCount} alt="img"/>
       </div>
-      <img className='about-us-image main-image' src={cashew} onLoad={incrementImageCount}/>
+      <img className='about-us-image main-image' src={cashew} onLoad={incrementImageCount} alt="img"/>
     </div>
   </div>
   );
