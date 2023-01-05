@@ -49,6 +49,10 @@
     font-weight: 500;
     margin-bottom: 10px;
   }
+
+  .input-error .label{
+    color:#ba181b !important;
+  }
   
   #message-input{
     border: 0px;
@@ -61,6 +65,10 @@
     border: 0px;
     border-bottom: 1px solid rgb(197, 186, 186);
     width:100%;
+  }
+
+  .input-error input, .input-error textarea{
+    border-bottom: 1px solid #ba181b !important;
   }
   
   #contact-form input:focus-visible, #message-input:focus-visible{
