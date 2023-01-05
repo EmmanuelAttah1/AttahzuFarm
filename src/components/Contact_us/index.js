@@ -112,7 +112,7 @@ function ContactUs(props) {
       fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", form })
+        body: encode({ "form-name": "contact", ...form })
       })
         .then(() => {
           clearForm()
