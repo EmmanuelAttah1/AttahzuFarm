@@ -91,6 +91,21 @@
   border-radius: 8px;
 }
 
+#about-us-images{
+  position: relative;
+}
+
+#image-loader{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .main-image{
   width:100%;
   height: 150px;

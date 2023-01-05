@@ -6,14 +6,11 @@ import AboutUs from './components/About_us';
 import ContactUs from './components/Contact_us';
 import Products from './components/Products';
 
-import AppLoading from './components/App_loading';
-
 
 
 function App() {
   const [pagePosition,setPagePosition] = useState("about-us")
   const [navScrolled,setNavScrolled] = useState(false)
-  const [imageCount,incrementImageCount] = useState(0)
 
   const OurProductRef = useRef()
   const ContactUsRef = useRef()
@@ -25,10 +22,6 @@ function App() {
     }
   }
 
-  const updateImageCounter=()=>{
-    const new_count = imageCount + 1
-    if(imageCount < 3){incrementImageCount(new_count)}
-  }
 
   const goToPage=page=>{
 
@@ -77,9 +70,6 @@ function App() {
 
   useEffect(() => {
     window.addEventListener('scroll',handleScroll)
-    setTimeout(()=>{
-      if(imageCount !== 3){incrementImageCount(3)}
-    },30000)
   })
 
   return (
@@ -88,12 +78,9 @@ function App() {
           <AboutUs 
             myRef={AboutUsRef} 
             scroll_to={goToPage}
-            imageCount={imageCount}
-            incrementImageCount={updateImageCounter}
           />
           <Products myRef={OurProductRef}/>
           <ContactUs myRef={ContactUsRef}/>
-        <AppLoading count={imageCount}/>
     </div>
   );
 }

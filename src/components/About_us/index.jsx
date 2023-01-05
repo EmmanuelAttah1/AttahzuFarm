@@ -6,16 +6,35 @@ import cashew from '../../img/cashew.jpg';
 import { Information } from '../../Information/data';
 
 import {ArrowRightOutlined} from '@ant-design/icons';
+import { Skeleton } from 'antd';
+import { useState,useEffect } from 'react';
+
 
 function AboutUs(props) {
-  const {scroll_to,incrementImageCount} = props
+  useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(false)
+    },20000)
+  },[])
+
+  const {scroll_to} = props
+  const [loading,setLoading] = useState(true)
   
+  let image_loaded = 0
+
+  const handle_image_load=()=>{
+    image_loaded++
+    if(image_loaded===3){
+      setTimeout(()=>{
+        setLoading(false)
+      },2000)
+    }
+  }
 
   return (
     <div id="top-section" ref={props.myRef}>
     <div id="info">
       <div id="top-section-heading">
-        {/* Finest Products, Finest Agriculture */}
         Natural Food <span>Agriculture </span>Grew
       </div>
       <div id="top-section-caption">
@@ -32,10 +51,14 @@ function AboutUs(props) {
     </div>
     <div id="about-us-images">
       <div id="about-us-images-row">
-        <img className='about-us-image' src={img2} onLoad={incrementImageCount} alt="img"/>
-        <img className='about-us-image' src={img} onLoad={incrementImageCount} alt="img"/>
+        {loading&&<div id="image-loader">
+          <Skeleton active loading={true} />
+          <Skeleton active loading={true} />
+        </div>}
+        <img className='about-us-image' src={img2} onLoad={handle_image_load} alt="img"/>
+        <img className='about-us-image' src={img} onLoad={handle_image_load} alt="img"/>
       </div>
-      <img className='about-us-image main-image' src={cashew} onLoad={incrementImageCount} alt="img"/>
+      <img className='about-us-image main-image' src={cashew} onLoad={handle_image_load} alt="img"/>
     </div>
   </div>
   );
