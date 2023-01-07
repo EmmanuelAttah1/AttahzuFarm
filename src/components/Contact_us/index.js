@@ -2,12 +2,26 @@ import './index.css';
 
 import { useState } from 'react';
 
-import {PhoneOutlined,MailOutlined,EnvironmentOutlined} from '@ant-design/icons';
+import {PhoneOutlined,MailOutlined,EnvironmentOutlined, LoadingOutlined} from '@ant-design/icons';
 import MyInput from '../MyInput';
 
 import { Information } from '../../Information/data';
 
-import { notification } from 'antd';
+import { notification,Spin } from 'antd';
+
+
+
+const antIcon = (
+  <LoadingOutlined
+    style={{
+      fontSize: 20,
+      marginRight:'10px',
+      color:"#ffffff"
+    }}
+    spin
+  />
+);
+
 
 const encode = (data) => {
   return Object.keys(data)
@@ -18,12 +32,13 @@ const encode = (data) => {
 
 function ContactUs(props) {
   const {myRef} = props
+  const [buttonLoading,setButtonLoading] = useState(false)
   const [formData,setFormData] = useState([
     {name:"First Name", placeholder:"John", id:"first_name", error:false, value:null},
     {name:"Last Name", placeholder:"Doe", id:"last_name", error:false, value:null},
     {name:"Email", placeholder:"JohnDoe@gmail.com", id:"email", error:false, value:null},
     {name:"Phone Number", placeholder:"+234 xxx xxx", id:"phone_number", error:false, value:null},
-    {name:"Country", placeholder:"Nigeria", id:"country", error:false, value:null},
+    {name:"Country", placeholder:"Your country's name", id:"country", error:false, value:null},
   ]
   )
   const [messageField,setMessageField] = useState({value:null,error:false})
@@ -34,7 +49,7 @@ function ContactUs(props) {
       {name:"Last Name", placeholder:"Doe", id:"last_name", error:false, value:null},
       {name:"Email", placeholder:"JohnDoe@gmail.com", id:"email", error:false, value:null},
       {name:"Phone Number", placeholder:"+234 xxx xxx", id:"phone_number", error:false, value:null},
-      {name:"Country", placeholder:"Nigeria", id:"country", error:false, value:null},
+      {name:"Country", placeholder:"Your country's name", id:"country", error:false, value:null},
     ])
 
     setMessageField({value:null,error:false})
@@ -106,7 +121,7 @@ function ContactUs(props) {
 
   const handleSubmit = e => {
     const formisValid = validateForm()
-
+    setButtonLoading(true)
     if(!formisValid[0]){
       const form = formisValid[1]
       fetch("/", {
@@ -115,10 +130,11 @@ function ContactUs(props) {
         body: encode({ "form-name": "contact", ...form })
       })
         .then(() => {
+          setButtonLoading(false)
           clearForm()
           const placement = "top"
           notification.success({
-            message: `Your message has been saved..`,
+            message: `Message Sent`,
             placement,
           });
         })
@@ -126,6 +142,7 @@ function ContactUs(props) {
       e.preventDefault();
       
     }else{
+      setButtonLoading(false)
       const placement = "top"
       notification.error({
         message: `Please Fill all form fields to proceed`,
@@ -176,7 +193,9 @@ function ContactUs(props) {
               }} value={messageField.value==null?"":messageField.value}/>
             </div>
 
-            <div className='top-section-btn submit-btn' onClick={handleSubmit}>Send message</div>
+            <div className='top-section-btn submit-btn' onClick={handleSubmit}>
+              {buttonLoading?<><Spin indicator={antIcon} /><span>Sending message</span></> : "Send message"} 
+            </div>
           </div>
         </div>
       </div>
